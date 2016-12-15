@@ -63,9 +63,12 @@
 					<div class="msg-content">
 						{{message.msg}}
 					</div>
-					<div class="reply__to" data-ng-click="switchReplyTo(message.msgFromId)" data-ng-if="boss === user.uid && message.msgFromId != boss">
+					<div class="reply__to" data-ng-click="switchReplyTo(message.msgFromId)" data-ng-if="boss === user.uid && message.msgFromId != boss && replyTo != message.msgFromId">
 						Reply
 					</div>
+					<div class="reply__to" data-ng-if="boss === user.uid && message.msgFromId != boss && replyTo == message.msgFromId">
+						Replying To
+					</div> 
 				</div>
 			</div>
 			<div class="inputbox no-flex">
