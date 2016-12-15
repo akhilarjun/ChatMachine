@@ -1,4 +1,4 @@
-var app = window.angular.module('chatmachine', ['firebase','ngAnimate']);
+var app = window.angular.module('chatmachine', ['firebase','ngAnimate','ngSanitize']);
 
 app.run(function () {
 	// Initialize Firebase
@@ -53,7 +53,7 @@ app.service("myDb", ["$firebaseArray", "$firebaseObject", function ($firebaseArr
 	};
 }]);
 
-app.controller('chatcontrol', ['Auth', '$scope', 'myDb', "BOSS", function (auth, scope, myDb, boss) {
+app.controller('chatcontrol', ['Auth', '$scope', 'myDb', "BOSS", "$sanitize", function (auth, scope, myDb, boss, $sanitize) {
 
 	//intialize
 	scope.messages;
@@ -63,6 +63,8 @@ app.controller('chatcontrol', ['Auth', '$scope', 'myDb', "BOSS", function (auth,
 	scope.messages__busy = true;
 	scope.replyTo = boss;
 	scope.boss = boss;
+	//For enabling ascii emojis
+	emojione.ascii = true;
 	//Initialize the notification system
 	if ('Notification' in window) {
 	  notify();
@@ -151,6 +153,7 @@ app.controller('chatcontrol', ['Auth', '$scope', 'myDb', "BOSS", function (auth,
 	};
 
 	scope.sendChats = function () {
+		scope.clientMsg.content = $sanitize(scope.clientMsg.content);
 		if (scope.clientMsg.content && scope.clientMsg.content.trim() != '') {
 			scope.messages__busy = true;
 			scope.messages.$add({
@@ -173,4 +176,9 @@ app.controller('chatcontrol', ['Auth', '$scope', 'myDb', "BOSS", function (auth,
 			});
 		}
 	};
+	
+	scope.render = function (input) {
+		var renderedOutput = emojione.shortnameToImage(input);
+		return renderedOutput;
+	}
 }]);
