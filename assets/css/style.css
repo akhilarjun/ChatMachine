@@ -1,0 +1,248 @@
+/*overriding the defaults in smart frmwk*/
+body{
+	height: 100vh;
+	width: 100vw;
+	background-color: #fff2e9;
+}
+
+.banner{
+	background-color: transparent;
+	color: #42a5f6;
+	padding: 10vw;
+	transition: all 300ms;
+}
+
+.banner h1{
+	background: #42a5f6;
+	font-size: 40px;
+    color: #fff;
+    padding: 20px 35px;
+    display: inline-block;
+    border-radius: 10px;
+	border-bottom-left-radius: 0;
+}
+
+.banner h1.isBubble:before{
+	content: "";
+	height: 0;
+	width: 0;
+	border: 10px #42a5f6 solid;
+	border-top-color: transparent;
+    border-left-color: transparent;
+    position: absolute;
+    left: -20px;
+    bottom: 0;
+}
+
+.helper{
+	margin: 20px 0;
+	color: #42a5f6;
+	transition: all 300ms;
+}
+
+.banner.logged_in{
+	padding: 0;
+	z-index: 100;
+	box-shadow: 0px 1px 2px #a7a7a7;
+}
+
+.banner.logged_in h1{
+	width: 100%;
+	font-weight: lighter;
+	text-align: left;
+	border-radius: 0;
+	font-size: 100%;
+}
+
+.banner.logged_in h1.logout{
+	text-align: center;
+	background: #ff5e5e;
+	cursor:pointer;
+}
+
+.display_pic{
+	max-width: 100%;
+    max-height: 40px;
+    border-radius: 100%;
+    vertical-align: middle;
+    top: -5px;
+	margin-right: 10px;
+}
+
+.login_g{
+	margin-top: 80px;
+	font-weight: 100;
+	border-color: transparent;
+	outline: none;
+}
+
+.login_g{
+	background: #ff5e5e !important;
+}
+
+.login_g:hover{
+	background: #c44 !important;
+}
+
+.banner.container{
+	background: transparent;
+	box-shadow: none;
+	padding: 10vw;
+}
+
+.container,.banner.logged_in.container{
+	max-width: 700px;
+	padding: 0;
+	z-index: 50;
+	background: rgba(255, 255, 255, 0.8);
+	box-shadow: 0 0 3px #ddd;
+}
+
+.bubble{
+	padding: 10px;
+	font-family: 'Nunito', sans-serif;
+}
+
+.bubble.odd{
+	background: #f5f5f5;
+}
+
+.messages{
+	overflow: auto;
+}
+
+.messages .msg-sender{
+	display: inline-block;
+	margin: 10px;
+	color: #a660ff;
+    font-weight: bolder;
+}
+
+.messages .msg-content{
+	padding: 10px;
+    background: #2196f3;
+    color: #fff;
+    display: inline-block;
+    max-width: 400px;
+    border-radius: 10px;
+}
+
+.messages .msg-content:before{
+	content: "";
+	height: 0; width: 0;
+	border: 5px solid transparent;
+	border-right-color: #2196F3;
+	position: absolute;
+    left: -10px;
+    top: 15px;
+}
+
+.inputbox{
+	border-top: 1px solid #eee;
+}
+
+.inputbox input{
+	padding: 28px;
+	border: 1px solid transparent;
+	color: #5854ff;
+	font-family: 'Nunito', sans-serif;
+}
+
+.send_button{
+	padding: 29px;
+	background: #2196F3;
+	color: #fff;
+	cursor: pointer;
+}
+
+.bots_in_footer{
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	opacity: 0.2;
+}
+
+.bots_in_footer img{
+	display : block;
+	width: 80%;
+	height: auto;
+	margin: 0 auto;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #ddd;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #ddd;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #ddd;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #ddd;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+ 
+::-webkit-scrollbar-track {
+    background: #eee;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+@media (max-width:768px){
+	.banner h1{
+		font-size: 20px;
+		padding: 20px 10px;
+	}
+	.display_pic{
+		margin-top: -10px;
+		margin-bottom: -10px;
+		top: -1px;
+	}
+}
+
+.loader{
+	padding: 15px;
+	font-weight: bold;
+}
+
+.bubble.ng-enter, .bubble.ng-leave{
+	transition: all 1500ms;
+	position: relative;
+}
+
+.bubble.ng-enter.ng-enter-active, .bubble.ng-leave{
+	opacity: 1;
+}
+
+.bubble.ng-leave.ng-leave-active, .bubble.ng-enter{
+	opacity: 0;
+}
+
+input:disabled{
+	background: #eee;
+	cursor: not-allowed;
+}
+
+.reply__to{
+	margin: 10px;
+	font-size: 10px;
+	padding: 3px 7px;
+	background: #ddd;
+	color: #333;
+	border-radius: 5px;
+	display: inline-block;
+	cursor: pointer;
+	transition: all 300ms;
+}
+
+.reply__to:hover{
+	background: #a660ff;
+	color: #fff;
+}

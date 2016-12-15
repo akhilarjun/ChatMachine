@@ -1,0 +1,347 @@
+@import 'smart-fix.css';
+@import 'smart-grid.css';
+@import 'smart-utils.css';
+
+html {
+  font-family: 'Calibri';
+  font-size: 16px;
+}
+body ul {
+  margin: 8px 0 8px 18px;
+  display: block;
+}
+body ul li {
+  list-style: disc;
+}
+body h1 {
+  font-size: 46px;
+}
+body h2 {
+  font-size: 41px;
+}
+body h3 {
+  font-size: 36px;
+}
+body h4 {
+  font-size: 31px;
+}
+body h5 {
+  font-size: 26px;
+}
+body h6 {
+  font-size: 21px;
+}
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-justify {
+  text-align: justify;
+}
+.bigger-font {
+  font-size: 1.2em;
+}
+.smaller-font {
+  font-size: 0.8em;
+}
+.inline-block {
+  display: inline-block;
+}
+.block {
+  display: block;
+}
+.hide {
+  display: none;
+}
+.note {
+  padding: 8px 5px 8px 48px;
+  font-weight: 200;
+  margin: 8px 0;
+  background: #e5f5ff;
+  font-style: italic;
+}
+.note:after {
+  content: "Note";
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 8px 5px;
+  height: 100%;
+  background: #009fff;
+  color: #ffffff;
+  font-style: normal;
+  font-weight: 400;
+  border-right: 2px solid #007fcc;
+}
+.note.warning {
+  padding: 8px 5px 8px 70px;
+  background: #fef4e3;
+}
+.note.warning:after {
+  background: #f6ab29;
+  content: "Warning";
+  border-right: 2px solid #e2930a;
+}
+.note.error {
+  padding: 8px 5px 8px 48px;
+  background: #ffe7e7;
+}
+.note.error:after {
+  background: #ff4e4e;
+  content: "Error";
+  border-right: 2px solid #ff1b1b;
+}
+.clearfix:after,
+.clearfix:before {
+  content: " ";
+  clear: both;
+  display: table;
+}
+.banner {
+  padding: 50px;
+  width: 100%;
+  background: #009fff;
+  color: #eeeeee;
+}
+.container {
+  padding: 10px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.container.wide-screen {
+  max-width: 100%;
+}
+.article {
+  padding: 10px;
+}
+.article .heading {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.article .body {
+  font-weight: 200;
+}
+button,
+.button {
+  background: #ffffff;
+  border: 1px solid #009fff;
+  color: #009fff;
+  padding: 10px 15px;
+  display: inline-block;
+  cursor: pointer;
+  margin: 5px;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+}
+button.large,
+.button.large {
+  padding: 20px 30px;
+}
+button.small,
+.button.small {
+  padding: 5px 7px;
+}
+button:active,
+.button:active {
+  background: #f2f2f2;
+}
+button.curved,
+.button.curved {
+  border-radius: 3px;
+}
+button.simple,
+.button.simple {
+  border: none;
+}
+button.warning,
+.button.warning {
+  background: #f6ab29;
+  border: 1px solid #f6ab29;
+  color: #ffffff;
+}
+button.warning:hover,
+.button.warning:hover {
+  background: #f5a111;
+}
+button.warning:active,
+.button.warning:active {
+  background: #f7b541;
+}
+button.error,
+.button.error {
+  background: #ff4e4e;
+  border: 1px solid #ff4e4e;
+  color: #ffffff;
+}
+button.error:hover,
+.button.error:hover {
+  background: #ff3434;
+}
+button.error:active,
+.button.error:active {
+  background: #ff6868;
+}
+button.success,
+.button.success {
+  background: #41d641;
+  border: 1px solid #41d641;
+  color: #ffffff;
+}
+button.success:hover,
+.button.success:hover {
+  background: #2dd12d;
+}
+button.success:active,
+.button.success:active {
+  background: #56db56;
+}
+.input > input {
+  width: 100%;
+  max-width: 250px;
+  min-height: 37px;
+  padding: 10px 5px;
+  outline: none;
+  box-shadow: none;
+  border: 1px solid #009fff;
+}
+.input > input + label {
+  position: absolute;
+  top: 8px;
+  left: 5px;
+  cursor: text;
+  color: #bbbbbb;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+}
+.input > input:focus + label,
+.input > input:valid + label {
+  top: -20px;
+  left: 0;
+}
+.input > input[type='date'] {
+  padding: 8px 5px;
+}
+.input > input[type='date'] + label {
+  color: transparent;
+}
+.input > input[type='date']:focus + label,
+.input > input[type='date']:valid + label {
+  color: #bbbbbb;
+}
+.input.error > input {
+  border: 1px solid #ff4e4e;
+}
+.input.warning > input {
+  border: 1px solid #f6ab29;
+}
+.input.success > input {
+  border: 1px solid #41d641;
+}
+.input.curved > input {
+  border-radius: 4px;
+}
+.input.fixed-row input,
+.input[class*='grid-cell'] input {
+  max-width: 100%;
+}
+.icon-group:after,
+.icon-group:before {
+  content: " ";
+  clear: both;
+  display: table;
+}
+.icon-group > .icon {
+  display: inline-block;
+  float: left;
+  height: 37px;
+  width: 37px;
+  border-radius: 3px 0 0 3px;
+}
+.icon-group > .icon > img {
+  display: inherit;
+}
+.icon-group > .input {
+  display: inline-block;
+  width: calc( 100% - 37px );
+  border-radius: 0 3px 3px 0;
+}
+.icon-group > .input > input {
+  max-width: 100%;
+  border-radius: 0 3px 3px 0;
+}
+table {
+  width: 100%;
+  border-spacing: 0;
+}
+table caption {
+  font-size: 1.2em;
+}
+table.curved-edges:not(.with-border) {
+  border: 1px solid #e1e1e1;
+  border-radius: 10px;
+  overflow: hidden;
+}
+table.curved-edges:not(.with-border) th {
+  border-bottom: 1px solid #e1e1e1;
+}
+table.with-border {
+  border-collapse: collapse;
+}
+table.with-border th,
+table.with-border td,
+table.with-border caption {
+  border: 1px solid #e1e1e1;
+}
+table.with-border caption {
+  border-bottom: none;
+}
+table.show-hover tbody > tr:hover {
+  cursor: pointer;
+  background: #eeeeee;
+}
+table.highlight-active tbody > tr:active {
+  cursor: pointer;
+  background: #232323;
+  color: #eeeeee;
+}
+table > thead th {
+  font-size: 18px;
+}
+table > tbody .error {
+  background: #ffb4b4 !important;
+}
+table > tbody .warning {
+  background: #fad18b !important;
+}
+table > tbody .success {
+  background: #95e895 !important;
+}
+table > tbody tr:nth-child(even) {
+  background: #f8f8f8;
+}
+table th,
+table td,
+table caption {
+  padding: 10px;
+}
+table.wrap-content th,
+table.wrap-content td,
+table.wrap-content caption {
+  word-break: break-word;
+}
+table.with-large-cells th,
+table.with-large-cells td,
+table.with-large-cells caption {
+  padding: 20px;
+}
+table.with-small-cells th,
+table.with-small-cells td,
+table.with-small-cells caption {
+  padding: 5px;
+}

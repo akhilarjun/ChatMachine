@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html data-ng-app="chatmachine">
+	<head>
+		<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+		<title> ChatMachine </title>
+		<link href="assets\css\smart-framework-1.0\smart-framework.css" rel="stylesheet"/>
+		<link href="assets\css\style.css" rel="stylesheet"/>
+		<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+		<style>
+		[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+		  display: none !important;
+		}
+		</style>
+	</head>
+	<body data-ng-controller="chatcontrol" class="flex-column">
+		<div class="banner container no-flex"  data-ng-cloak>
+			<div class="text-center">
+				<div class="fixed-row" data-ng-if="user">
+					<div class="grid-cell-d-10 grid-cell-t-10 grid-cell-m-6">
+						<h1>
+							<!--<img data-ng-src="{{user.photoURL}}" class='display_pic'>-->
+							{{user.displayName.split(' ')[0]}}
+						</h1>
+					</div>
+					<div class="grid-cell-d-2 grid-cell-t-2 grid-cell-m-6">
+						<h1 class="logout" data-ng-click="signOut()">
+							Signout
+						</h1>
+					</div>
+				</div>
+				<div data-ng-if="!user">
+					<h1 class="isBubble">
+						Is Typing . . .
+					</h1>
+				</div>
+			</div>
+			<div class="text-center helper" data-ng-if="!user">
+				A fun small project to keep in touch with all of you out there!
+			</div>
+			<div class="text-center">
+				<button class="curved large bigger-font login_g error" data-ng-click="login()" data-ng-if="!user">
+					Login With Google
+				</button>
+			</div>
+		</div>
+		<div class="container flex-column grid-cell" data-ng-if="user"  data-ng-cloak>
+			<div class="messages grid-cell flex-column">
+				<div class="grid-cell">
+					<!--nothing here-->
+				</div>
+				<div class="grid-cell text-center loader" data-ng-show="!messages.$resolved">
+					Loading messages
+				</div>
+				<div class="bubble no-flex" data-ng-repeat="message in messages| authenticate" data-ng-show="messages.$resolved" data-ng-class-odd="'odd'" data-ng-class-even="'even'">
+					<div class="msg-sender" title="{{message.msgFromName}}">
+						<span data-ng-if="message.msgFromId != user.uid">{{message.msgFromName.split(' ')[0]}}</span>
+						<span data-ng-if="message.msgFromId == user.uid">You</span>
+					</div>
+					<div class="msg-content">
+						{{message.msg}}
+					</div>
+					<div class="reply__to" data-ng-click="switchReplyTo(message.msgFromId)" data-ng-if="boss === user.uid && message.msgFromId != boss">
+						Reply
+					</div>
+				</div>
+			</div>
+			<div class="inputbox no-flex">
+				<div class="fixed-row">
+					<div class="grid-cell-d-9 grid-cell-t-9 grid-cell-m-9 input">
+						<input type='text' placeholder="Hey there!" autofocus data-ng-model="clientMsg.content" class="msgHolder" data-ng-disabled="messages__busy"/>
+					</div>
+					<div class="grid-cell-d-3 grid-cell-t-3 grid-cell-m-3 text-center send_button" data-ng-click="sendChats()">
+						Send
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bots_in_footer">
+			<img src="assets\images\bots_family_for_bg.jpg" />
+		</div>
+		<!-- Scripts go here -->
+		<!--jQuery
+		<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>-->
+		<!-- AngularJS -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>		
+		<!-- Firebase -->
+		<script src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
+		<!-- AngularFire -->
+		<script src="https://cdn.firebase.com/libs/angularfire/2.1.0/angularfire.min.js"></script>
+		<!-- ChatMachine lives below -->
+		<script src="assets\js\chatmachine.js"></script>
+		<!--For notifying the user-->
+		<script src="assets\js\notify.min.js"></script>
+	</body>
+</html>
