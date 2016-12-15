@@ -151,24 +151,26 @@ app.controller('chatcontrol', ['Auth', '$scope', 'myDb', "BOSS", function (auth,
 	};
 
 	scope.sendChats = function () {
-		scope.messages__busy = true;
-		scope.messages.$add({
-			msg: scope.clientMsg.content,
-			msgFromId: scope.user.uid,
-			msgFromName: scope.user.displayName,			
-			msgTo: scope.replyTo,
-			timeStamp: firebase.database.ServerValue.TIMESTAMP,
-			fromBoss: scope.user.uid === boss
-		}).then(function () {
-			//scope.replyTo = boss;
-			document.querySelector('.messages').scrollTop = document.querySelector('.messages').scrollHeight;
-			scope.clientMsg.content = '';
-			scope.messages__busy = false;
-			setTimeout(function() {
-				document.querySelector('.msgHolder').focus();
-			}, 100);
-		}, function () {
-			console.error('Message could not be sent');
-		});
+		if (scope.clientMsg.content && scope.clientMsg.content.trim() != '') {
+			scope.messages__busy = true;
+			scope.messages.$add({
+				msg: scope.clientMsg.content,
+				msgFromId: scope.user.uid,
+				msgFromName: scope.user.displayName,			
+				msgTo: scope.replyTo,
+				timeStamp: firebase.database.ServerValue.TIMESTAMP,
+				fromBoss: scope.user.uid === boss
+			}).then(function () {
+				//scope.replyTo = boss;
+				document.querySelector('.messages').scrollTop = document.querySelector('.messages').scrollHeight;
+				scope.clientMsg.content = '';
+				scope.messages__busy = false;
+				setTimeout(function() {
+					document.querySelector('.msgHolder').focus();
+				}, 100);
+			}, function () {
+				console.error('Message could not be sent');
+			});
+		}
 	};
 }]);
