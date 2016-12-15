@@ -55,7 +55,7 @@
 				<div class="grid-cell text-center loader" data-ng-show="!messages.$resolved">
 					Loading messages
 				</div>
-				<div class="bubble no-flex" data-ng-repeat="message in messages| authenticate" data-ng-show="messages.$resolved" data-ng-class-odd="'odd'" data-ng-class-even="'even'">
+				<div class="bubble no-flex" data-ng-repeat="message in messages| authenticate" data-ng-show="messages.$resolved" data-ng-class="{'go-right':message.fromBoss}">
 					<div class="msg-sender" title="{{message.msgFromName}}">
 						<span data-ng-if="message.msgFromId != user.uid">{{message.msgFromName.split(' ')[0]}}</span>
 						<span data-ng-if="message.msgFromId == user.uid">You</span>
