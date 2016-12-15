@@ -64,7 +64,9 @@ app.controller('chatcontrol', ['Auth', '$scope', 'myDb', "BOSS", function (auth,
 	scope.replyTo = boss;
 	scope.boss = boss;
 	//Initialize the notification system
-	notify();
+	if ('Notification' in window) {
+	  notify();
+	}
 
 	// Any time auth state changes, add the user data to scope
     auth.$onAuthStateChanged(function(firebaseUser) {
@@ -125,13 +127,15 @@ app.controller('chatcontrol', ['Auth', '$scope', 'myDb', "BOSS", function (auth,
 				if ('prevChild' in e && e.event === 'child_added') {
 					var newMsg = scope.messages.$getRecord(e.key);
 					if (newMsg.msgFromId !== scope.user.uid) {
-						notify('New Message from '+newMsg.msgFromName, {
-							body: newMsg.msg,
-							icon: 'assets/images/bots_family_for_bg.jpg',
-							onclick: function (e) {
-								window.focus();
-							}
-						});
+						if ('Notification' in window) {
+							notify('New Message from '+newMsg.msgFromName, {
+								body: newMsg.msg,
+								icon: 'assets/images/bots_family_for_bg.jpg',
+								onclick: function (e) {
+									window.focus();
+								}
+							});
+						}
 					}
 					setTimeout(function() {
 						document.querySelector('.messages').scrollTop = document.querySelector('.messages').scrollHeight;
