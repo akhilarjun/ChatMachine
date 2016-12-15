@@ -246,3 +246,7 @@ input:disabled{
 	background: #a660ff;
 	color: #fff;
 }
+
+.emojione {
+    font-size: 25px !important;
+}
