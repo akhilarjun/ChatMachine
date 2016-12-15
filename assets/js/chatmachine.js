@@ -126,7 +126,7 @@ app.controller('chatcontrol', ['Auth', '$scope', 'myDb', "BOSS", function (auth,
 			scope.messages.$watch(function (e) {
 				if ('prevChild' in e && e.event === 'child_added') {
 					var newMsg = scope.messages.$getRecord(e.key);
-					if (newMsg.msgFromId !== scope.user.uid) {
+					if (newMsg.msgTo == scope.user.uid) {
 						if ('Notification' in window) {
 							notify('New Message from '+newMsg.msgFromName, {
 								body: newMsg.msg,
