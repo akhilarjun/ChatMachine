@@ -112,7 +112,7 @@ app.controller('chatcontrol', ['Auth', '$scope', 'myDb', "BOSS", "$sanitize", fu
 	};
 	
 	scope.fetchChats = function () {
-		scope.messages = myDb.getArray("messages");
+		scope.messages = myDb.getArray(myDb.getRef("messages").limitToLast(100));
 		scope.messages.$loaded(function (data) {
 			//console.log(data);
 			scope.messages__busy = false;
