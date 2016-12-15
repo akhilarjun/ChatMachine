@@ -61,7 +61,7 @@
 						<span data-ng-if="message.msgFromId == user.uid">You</span>
 					</div>
 					<div class="msg-content">
-						{{message.msg}}
+						<span ng-bind-html="render(message.msg)"></span>
 					</div>
 					<div class="reply__to" data-ng-click="switchReplyTo(message.msgFromId)" data-ng-if="boss === user.uid && message.msgFromId != boss && replyTo != message.msgFromId">
 						Reply
@@ -90,7 +90,8 @@
 		<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>-->
 		<!-- AngularJS -->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>		
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.min.js"></script>
 		<!-- Firebase -->
 		<script src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
 		<!-- AngularFire -->
