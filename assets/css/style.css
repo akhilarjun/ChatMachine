@@ -125,6 +125,7 @@ body{
     display: inline-block;
     max-width: 300px;
     border-radius: 10px;
+    word-break: break-word;
 }
 
 .messages .msg-content:before{
