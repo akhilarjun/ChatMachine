@@ -154,6 +154,16 @@ app.controller('chatcontrol', ['Auth', '$scope', 'myDb', "BOSS", "$sanitize", fu
 
 	scope.sendChats = function () {
 		scope.clientMsg.content = $sanitize(scope.clientMsg.content);
+		var reg = new RegExp("([a-zA-Z0-9]+://)?([a-zA-Z0-9_]+:[a-zA-Z0-9_]+@)?([a-zA-Z0-9.-]+\\.[A-Za-z]{2,4})(:[0-9]+)?([^ ])+");
+		if(reg.test(scope.clientMsg.content)) {
+			var url = reg.exec(scope.clientMsg.content), formattedUrl = '';
+			if (url[0].indexOf('http') == -1 && url[0].indexOf('https') == -1) {
+				formattedUrl = 'http://'+url[0];
+			} else {
+				formattedUrl = url[0];
+			}
+			scope.clientMsg.content = scope.clientMsg.content.replace(url[0],'<a href="'+formattedUrl+'" target="_blank">'+url[0]+'</a>');
+		}
 		if (scope.clientMsg.content && scope.clientMsg.content.trim() != '') {
 			scope.messages__busy = true;
 			scope.messages.$add({
