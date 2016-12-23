@@ -111,6 +111,10 @@ app.controller('chatcontrol', ['Auth', '$scope', 'myDb', "BOSS", "$sanitize", fu
 		});
 	};
 	
+	window.setTimeout(function(){
+		location.reload();
+	},1000);
+	
 	scope.fetchChats = function () {
 		scope.messages = myDb.getArray(myDb.getRef("messages").limitToLast(100));
 		scope.messages.$loaded(function (data) {
