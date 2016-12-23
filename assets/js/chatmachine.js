@@ -192,7 +192,11 @@ app.controller('chatcontrol', ['Auth', '$scope', 'myDb', "BOSS", "$sanitize", fu
 	};
 	
 	scope.render = function (input) {
-		var renderedOutput = emojione.shortnameToImage(input);
-		return renderedOutput;
+		if(input){
+			var renderedOutput = emojione.shortnameToImage(input);
+			return renderedOutput;
+		} else {
+			return input;
+		}
 	}
 }]);
